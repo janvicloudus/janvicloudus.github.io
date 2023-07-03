@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
+
+    <base href="/">
+
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="A new Flutter project.">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="local_delivery_admin">
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>Mighty Delivery</title>
+    <link rel="manifest" href="///manifest.json">
+</head>
+<body>
+
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyDBQq8MVaCDFoeO-99UeG55vOL-uML_MSc",
+  authDomain: "roadfriend-dd657.firebaseapp.com",
+  projectId: "roadfriend-dd657",
+  storageBucket: "roadfriend-dd657.appspot.com",
+  messagingSenderId: "816471214471",
+  appId: "1:816471214471:web:fbfe239c32e825ac3d6b22",
+  measurementId: "G-4FR11MCNNJ"
+};
+   firebase.initializeApp(firebaseConfig);
+   const messaging = firebase.messaging();
+</script>
+<script src="main.dart.js" type="application/javascript"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+
+        navigator.serviceWorker.register('/firebase-messaging-sw.js', { scope: './'}).then(function(registration) {
+          messaging.useServiceWorker(registration);
+          console.log('Service firebase worker registration succeeded:', registration);
+        }, function(error) {
+          console.log('Service firebase worker registration failed:', error);
+        });
+      });
+    }
+
+</script>
+</body>
+</html>
